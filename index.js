@@ -7,8 +7,28 @@ const app = express();
 const port = 3000;
 
 //middleware
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
+
+//sample database
+
+const venues = {
+  venue1: {
+    name: "The Sydney Opera House",
+    country: "Australia",
+    capacity: 5738,
+  },
+  venue2: {
+    name: "The Globe Theatre",
+    country: "England",
+    capacity: 1570,
+  },
+  venue3: {
+    name: "La Comédie Française",
+    country: "France",
+    capacity: 2014,
+  },
+};
 
 //routes/endpoints
 
@@ -19,20 +39,39 @@ app.get("/", (req, res) => {
 //CRUD operations
 
 //CREATE one venue
-app.post();
+// app.post();
 
-//READ all venues
-app,get();
+// //READ all venues
+app.get("/api/venues", (req, res) => {
+  res
+    .status(200)
+    .send({ message: "Here are the venues in our database", venues: venues });
+});
 
-//READ one venue
-app.get();
+// //READ one venue
+app.get("/api/venues/:id", (req, res) => {
+  const { id } = req.params;
+  const venue = venues[id];
 
-//UPDATE one venue
-app.put();
+  res.status(200).send({ message: "Here is the venue that you seek", venue });
+});
 
-//DELETE one venue
-app.delete();
+// //UPDATE one venue
+app.put("/api/venues/:id", (req, res) => {
+  const { id } = req.params;
+  const venue = venues[id];
+  venue.capacity = 10;
 
+  res.status(201).send({ message: "Updated venue!", venue });
+});
+
+// //DELETE one venue
+app.delete("/api/venues/:id", (req, res) => {
+  const { id } = req.params;
+  delete venues[id];
+
+  res.status(204).send();
+});
 
 //listener
 app.listen(port, () => {
