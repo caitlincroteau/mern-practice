@@ -4,19 +4,14 @@ const morgan = require("morgan");
 const router = require("./router");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 //setup
 const app = express();
 const port = 3000;
 dotenv.config();
 
-//middleware
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(router);
-
 //mongo database
-
 mongoose
   .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -28,6 +23,13 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+//middleware
+app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(router);
 
 //sample database
 

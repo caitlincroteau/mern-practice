@@ -10,7 +10,7 @@ const VenueSchema = new mongoose.Schema({
     required: true,
   },
   capacity: {
-    type: Integer,
+    type: Number,
     required: true,
   },
   isActive: {
@@ -20,4 +20,4 @@ const VenueSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Venues", VenueSchema);
+module.exports = mongoose.model("Venue", VenueSchema);
