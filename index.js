@@ -1,14 +1,33 @@
 //requirements
 const express = require("express");
 const morgan = require("morgan");
+const router = require("./router");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 //setup
 const app = express();
 const port = 3000;
+dotenv.config();
 
 //middleware
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(router);
+
+//mongo database
+
+mongoose
+  .connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 //sample database
 
