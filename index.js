@@ -18,6 +18,21 @@ app.get("/", (req, res) => {
 
 //CRUD operations
 
+//CREATE one venue
+app.post();
+
+//READ all venues
+app,get();
+
+//READ one venue
+app.get();
+
+//UPDATE one venue
+app.put();
+
+//DELETE one venue
+app.delete();
+
 
 //listener
 app.listen(port, () => {
