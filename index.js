@@ -32,25 +32,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
-// //sample database
-
-const venues = {
-  venue1: {
-    name: "The Sydney Opera House",
-    country: "Australia",
-    capacity: 5738,
-  },
-  venue2: {
-    name: "The Globe Theatre",
-    country: "England",
-    capacity: 1570,
-  },
-  venue3: {
-    name: "La Comédie Française",
-    country: "France",
-    capacity: 2014,
-  },
-};
 
 // //routes/endpoints
 
