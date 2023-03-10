@@ -11,7 +11,7 @@ const app = express();
 const port = 3000;
 dotenv.config();
 
-//mongo database
+//mongo database connection
 mongoose
   .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -32,61 +32,6 @@ app.use(express.json());
 //so app can access form input data
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
-
-
-// //routes/endpoints
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-
-// //CRUD operations
-
-// //CREATE one venue
-// app.post("/api/venues", (req, res) => {
-//   const newVenue = "venue4";
-//   venues[newVenue] = {
-//     name: "Teatro Caupolican",
-//     country: "Chile",
-//     capacity: 7000,
-//   };
-
-//   res
-//     .status(201)
-//     .send({ message: "Here is your new venue:", venue: venues["venue4"] });
-// });
-
-// // //READ all venues
-// app.get("/api/venues", (req, res) => {
-//   res
-//     .status(200)
-//     .send({ message: "Here are the venues in our database", venues: venues });
-// });
-
-// // //READ one venue
-// app.get("/api/venues/:id", (req, res) => {
-//   const { id } = req.params;
-//   const venue = venues[id];
-
-//   res.status(200).send({ message: "Here is the venue that you seek", venue });
-// });
-
-// // //UPDATE one venue
-// app.put("/api/venues/:id", (req, res) => {
-//   const { id } = req.params;
-//   const venue = venues[id];
-//   venue.capacity = 10;
-
-//   res.status(201).send({ message: "Updated venue!", venue });
-// });
-
-// // //DELETE one venue
-// app.delete("/api/venues/:id", (req, res) => {
-//   const { id } = req.params;
-//   delete venues[id];
-
-//   res.status(204).send();
-// });
 
 //listener
 app.listen(port, () => {
