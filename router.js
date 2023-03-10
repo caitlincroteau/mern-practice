@@ -4,6 +4,7 @@ const {
   getVenues,
   getVenue,
   updateVenue,
+  deleteVenue,
 } = require("./controllers/venueController");
 
 router.get("/", (req, res) => {
@@ -21,5 +22,8 @@ router.get("/venues/:id", getVenue);
 
 //UPDATE one
 router.put("/venues/:id", updateVenue);
+
+//DELETE one
+router.delete("/venues/:id", deleteVenue);
 
 module.exports = { router };
