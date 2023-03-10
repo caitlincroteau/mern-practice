@@ -29,6 +29,7 @@ app.use(morgan("dev"));
 app.use(cors());
 //so app can access json data
 app.use(express.json());
+//so app can access form input data
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
 

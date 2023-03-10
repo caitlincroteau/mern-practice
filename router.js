@@ -1,21 +1,25 @@
 const router = require("express").Router();
 const {
+  createVenue,
   getVenues,
   getVenue,
-  createVenue,
+  updateVenue,
 } = require("./controllers/venueController");
 
 router.get("/", (req, res) => {
   res.send("My router");
 });
 
-//read all
+//CREATE add one
+router.post("/venue", createVenue);
+
+//READ all
 router.get("/venues", getVenues);
 
-//read one
+//READ one
 router.get("/venues/:id", getVenue);
 
-//add one
-router.post("/venue", createVenue);
+//UPDATE one
+router.put("/venues/:id", updateVenue);
 
 module.exports = { router };
