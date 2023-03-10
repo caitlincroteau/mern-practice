@@ -1,4 +1,4 @@
-const Venue = require("../model/Venue");
+const Venue = require("../Model/Venue");
 
 //CRUD
 

@@ -13,11 +13,6 @@ const VenueSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  isActive: {
-    type: Boolean,
-    default: true,
-    required: true,
-  },
 });
 
 module.exports = mongoose.model("Venue", VenueSchema);
