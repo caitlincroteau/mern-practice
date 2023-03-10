@@ -39,7 +39,18 @@ app.get("/", (req, res) => {
 //CRUD operations
 
 //CREATE one venue
-// app.post();
+app.post("/api/venues", (req, res) => {
+  const newVenue = "venue4";
+  venues[newVenue] = {
+    name: "Teatro Caupolican",
+    country: "Chile",
+    capacity: 7000,
+  };
+
+  res
+    .status(201)
+    .send({ message: "Here is your new venue:", venue: venues["venue4"] });
+});
 
 // //READ all venues
 app.get("/api/venues", (req, res) => {
