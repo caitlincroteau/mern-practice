@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getVenues, createVenues } = require("./controllers/venues")
+const { getVenues, createVenue } = require("./controllers/venueController");
 
 router.get("/", (req, res) => {
   res.send("My router");
@@ -7,6 +7,6 @@ router.get("/", (req, res) => {
 
 router.get("/venues", getVenues);
 
-router.post("/venues", createVenues);
+router.post("/venue", createVenue);
 
 module.exports = { router };

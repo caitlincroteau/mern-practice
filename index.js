@@ -1,7 +1,7 @@
 //requirements
 const express = require("express");
 const morgan = require("morgan");
-const router = require("./router");
+const { router } = require("./router");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -27,29 +27,30 @@ mongoose
 //middleware
 app.use(morgan("dev"));
 app.use(cors());
+//so app can access json data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
 // //sample database
 
-// const venues = {
-//   venue1: {
-//     name: "The Sydney Opera House",
-//     country: "Australia",
-//     capacity: 5738,
-//   },
-//   venue2: {
-//     name: "The Globe Theatre",
-//     country: "England",
-//     capacity: 1570,
-//   },
-//   venue3: {
-//     name: "La Comédie Française",
-//     country: "France",
-//     capacity: 2014,
-//   },
-// };
+const venues = {
+  venue1: {
+    name: "The Sydney Opera House",
+    country: "Australia",
+    capacity: 5738,
+  },
+  venue2: {
+    name: "The Globe Theatre",
+    country: "England",
+    capacity: 1570,
+  },
+  venue3: {
+    name: "La Comédie Française",
+    country: "France",
+    capacity: 2014,
+  },
+};
 
 // //routes/endpoints
 
@@ -109,3 +110,6 @@ app.use(router);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+//video
+//https://www.youtube.com/watch?v=9OfL9H6AmhQ&ab_channel=Devtamin
