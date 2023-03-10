@@ -18,6 +18,14 @@ const getVenues = async (req, res) => {
   try {
     //get all venues with find({}) method
     const venues = await Venue.find({});
+
+    //if can't find venues
+    if (!venues) {
+      return res
+        .status(404)
+        .json({ message: `There are no items in this database.` });
+    }
+    //successfully find venues
     res.status(200).json(venues);
   } catch (err) {
     console.log(err.message);
@@ -39,7 +47,6 @@ const getVenue = async (req, res) => {
     }
     //successfully find venue
     res.status(200).json(venue);
-    
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ message: err.message });
